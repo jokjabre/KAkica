@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KAkica.Communication.AppUser;
+using KAkica.Domain.Models;
+using KAkica.Service.Implementation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KAkica_API.Controllers
@@ -10,11 +13,18 @@ namespace KAkica_API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private AppUserService m_userService;
+
+        public ValuesController(AppUserService service)
+        {
+            m_userService = service;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<AppUserResponse>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(m_userService.GetAll());
         }
 
         // GET api/values/5
