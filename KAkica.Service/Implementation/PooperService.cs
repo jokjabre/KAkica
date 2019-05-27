@@ -1,72 +1,29 @@
-﻿using KAkica.Communication.Pooper;
+﻿using AutoMapper;
+using KAkica.Communication.Pooper;
 using KAkica.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KAkica.Service.Implementation
 {
-    public class PooperService : IKakicaService<PooperRequest, PooperResponse>
+    public class PooperService : KakicaBaseService<Pooper, PooperRequest, PooperResponse>
     {
-        private KAkicaDbContext m_context;
-        public PooperService(KAkicaDbContext context)
+        public PooperService(KAkicaDbContext context, IMapper mapper)
         {
             m_context = context;
-        }
-        public PooperResponse Create(PooperRequest item)
-        {
-            throw new NotImplementedException();
+            m_mapper = mapper;
         }
 
-        public Task<PooperResponse> CreateAsync(PooperRequest item)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool Delete(int id)
+        protected override IQueryable<Pooper> GetAllWithIncludes()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            m_context.Dispose();
-        }
-
-        public IEnumerable<PooperResponse> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<PooperResponse>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public PooperResponse GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<PooperResponse> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PooperResponse Update(PooperRequest item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<PooperResponse> UpdateAsync(PooperRequest item)
-        {
-            throw new NotImplementedException();
+            return m_context.Poopers
+                .Include(u => u.AppUserPoopers)
+                    .ThenInclude(aup => aup.AppUser).AsQueryable();
         }
     }
 }

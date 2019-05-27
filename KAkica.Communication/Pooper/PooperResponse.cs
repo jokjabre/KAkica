@@ -5,8 +5,9 @@ using System.Text;
 
 namespace KAkica.Communication.Pooper
 {
-    public class PooperResponse
+    public class PooperResponse : PooperDto
     {
-        public ICollection<AppUserResponse> Owners { get; set; }
+        public int Id { get; set; }
+        public ICollection<AppUserDto> Owners { get; set; }
     }
 }

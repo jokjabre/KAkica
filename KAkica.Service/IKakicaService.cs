@@ -13,13 +13,13 @@ namespace KAkica.Service
         IEnumerable<TResponse> GetAll();
         TResponse GetById(int id);
         TResponse Create(TRequest item);
-        TResponse Update(TRequest item);
+        TResponse Update(int id, TRequest item);
         bool Delete(int id);
 
         Task<IEnumerable<TResponse>> GetAllAsync();
         Task<TResponse> GetByIdAsync(int id);
         Task<TResponse> CreateAsync(TRequest item);
-        Task<TResponse> UpdateAsync(TRequest item);
+        Task<TResponse> UpdateAsync(int id, TRequest item);
         Task<bool> DeleteAsync(int id);
 
     }

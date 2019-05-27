@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KAkica.Communication.AppUser
 {
-    public class AppUserRequest
+    public class AppUserRequest : AppUserDto
     {
         public string Password { get; set; }
     }

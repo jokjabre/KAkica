@@ -2,6 +2,7 @@
 using KAkica.Communication.AppUser;
 using KAkica.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,73 +11,38 @@ using System.Threading.Tasks;
 
 namespace KAkica.Service.Implementation
 {
-    public class AppUserService : IKakicaService<AppUserRequest, AppUserResponse>
+    public class AppUserService : KakicaBaseService<AppUser, AppUserRequest, AppUserResponse>
     {
-        private KAkicaDbContext m_context;
-        private IMapper m_mapper;
         public AppUserService(KAkicaDbContext context, IMapper mapper)
         {
             m_context = context;
             m_mapper = mapper;
         }
 
-        public AppUserResponse Create(AppUserRequest item)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<AppUserResponse> CreateAsync(AppUserRequest item)
+        protected override IQueryable<AppUser> GetAllWithIncludes()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<AppUserResponse> GetAll()
-        {
-            var res = m_context.AppUsers
+            return m_context.AppUsers
                 .Include(u => u.AppUserPoopers)
-                .ToList();
-            var a = m_mapper.Map<AppUserResponse>(res[0]);
-            return m_mapper.Map<IEnumerable<AppUserResponse>>(res);
+                    .ThenInclude(aup => aup.Pooper).AsQueryable();
         }
 
-        public Task<IEnumerable<AppUserResponse>> GetAllAsync()
+        public async Task<bool> AssignPooper(int ownerId, int pooperId)
         {
-            throw new NotImplementedException();
-        }
+            var user = await m_context.AppUsers.FindAsync(ownerId);
+            var pooper = await m_context.Poopers.FindAsync(pooperId);
 
-        public AppUserResponse GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+            if(user != null && pooper != null)
+            {
+                m_context.AppUserPoopers.Add(new AppUserPooper()
+                {
+                    AppUser = user,
+                    Pooper = pooper
+                });
 
-        public Task<AppUserResponse> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public AppUserResponse Update(AppUserRequest item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<AppUserResponse> UpdateAsync(AppUserRequest item)
-        {
-            throw new NotImplementedException();
+                return (await m_context.SaveChangesAsync()) > 0;
+            }
+            return false;
         }
     }
 }
