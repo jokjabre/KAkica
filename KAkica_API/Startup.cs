@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using KAkica.API.Startup_Helpers;
 using KAkica.Communication.Mappings;
 using KAkica.Domain.Models;
 using KAkica.Service.Implementation;
@@ -30,22 +31,24 @@ namespace KAkica_API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+        {
             services.AddDbContext<KAkicaDbContext>(opts => 
                 opts.UseSqlServer(Configuration.GetConnectionString("KAkicaDbContext")));
 
-            services.AddAutoMapper(typeof(Startup), typeof(AutoMapperProfile));
-            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddScoped<AppUserService>();
-            services.AddScoped<PooperService>();
+            services.AddAutoMapper(typeof(Startup), typeof(AutoMapperProfile));
+
+
+            services.AddScopedServices();
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
+
+            services.AddIdentity();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using KAkica.Communication.AppUser;
 using KAkica.Communication.Pooper;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace KAkica.Communication.Mappings
             CreateMap<Domain.Models.Pooper, PooperResponse>()
                 .ForMember(m => m.Owners, opts => opts.MapFrom(o => o.AppUserPoopers.Select(p => p.AppUser)))
                 .ReverseMap();
+
+            CreateMap<IdentityUser, Domain.Models.AppUser>()
+                .ForMember(u => u.Username, opts => opts.MapFrom(i => i.UserName));
         }
     }
 }
