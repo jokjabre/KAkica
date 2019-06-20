@@ -16,8 +16,8 @@ namespace KAkica.Domain.Models
         }
 
         public virtual DbSet<Pooper> Poopers { get; set; }
-        public virtual DbSet<AppUser> AppUsers { get; set; }
-        public virtual DbSet<AppUserPooper> AppUserPoopers { get; set; }
+        public virtual DbSet<Owner> Owner { get; set; }
+        public virtual DbSet<OwnerPooper> OwnerPoopers { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,8 +32,8 @@ namespace KAkica.Domain.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PooperConfiguration());
-            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
-            modelBuilder.ApplyConfiguration(new AppUserPooperConfiguration());
+            modelBuilder.ApplyConfiguration(new OwnerConfiguration());
+            modelBuilder.ApplyConfiguration(new OwnerPooperConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

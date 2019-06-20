@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <ProjectReference Include="..\KAkica.Domain\KAkica.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KAkica.Domain\KAkica.Domain.csproj" />
+    <Folder Include="PooperViewModel\" />
   </ItemGroup>
 
 </Project>
