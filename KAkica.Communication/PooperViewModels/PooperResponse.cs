@@ -1,21 +1,16 @@
 ﻿using JokJaBre.Core.Objects;
+using KAkica.Communication.AppUser;
 using KAkica.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KAkica.Communication.OwnerViewModels
+namespace KAkica.Communication.PooperViewModels
 {
-    public class OwnerResponse : JokJaBreResponse<Owner>
+    public class PooperResponse : JokJaBreResponse<Pooper>
     {
         public long Id { get; set; }
         public string Name { get; set; }
-
-        //public OwnerResponse(Owner model) : base(model)
-        //{
-        //    Id = model.Id;
-        //    Name = model.Name;
-        //}
 
         public override void SetFrom(IJokJaBreModel model)
         {

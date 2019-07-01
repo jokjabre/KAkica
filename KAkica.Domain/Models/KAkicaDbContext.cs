@@ -15,9 +15,9 @@ namespace KAkica.Domain.Models
             
         }
 
-        public virtual DbSet<Pooper> Poopers { get; set; }
-        public virtual DbSet<Owner> Owner { get; set; }
-        public virtual DbSet<OwnerPooper> OwnerPoopers { get; set; }
+        public DbSet<Pooper> Poopers { get; set; }
+        public DbSet<Owner> Owner { get; set; }
+        public DbSet<OwnerPooper> OwnerPoopers { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

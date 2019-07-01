@@ -2,15 +2,15 @@
 using KAkica.Communication.AppUser;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using KAkica.Communication.Auth;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace KAkica.Service.Implementation
 {
@@ -27,7 +27,7 @@ namespace KAkica.Service.Implementation
             m_mapper = mapper;
         }
 
-        public async Task<AppUserResponse> Register(AppUserRequest request)
+        public async Task<AuthResponse> Register(AuthRequest request)
         {
             var user = new IdentityUser
             {
@@ -41,7 +41,7 @@ namespace KAkica.Service.Implementation
             {
                 await m_userManager.AddToRoleAsync(user, UserRoles.Owner.ToString());
 
-                return m_mapper.Map<AppUserResponse>(user);
+                return m_mapper.Map<AuthResponse>(user);
             }
 
             return null;

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JokJaBre.Core.Objects;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ namespace KAkica.Domain.Models
 {
     public class OwnerPooper
     {
-        public int OwnerId { get; set; }
-        public virtual Owner Owner { get; set; }
+        public long OwnerId { get; set; }
+        public Owner Owner { get; set; }
 
-        public int PooperId { get; set; }
-        public virtual Pooper Pooper { get; set; }
+        public long PooperId { get; set; }
+        public Pooper Pooper { get; set; }
     }
 
     public class OwnerPooperConfiguration : IEntityTypeConfiguration<OwnerPooper>

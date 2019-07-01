@@ -1,28 +1,23 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using JokJaBre.Core.Objects;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using KAkica.Domain.Attributes;
 
 namespace KAkica.Domain.Models
 {
-    public class Owner : IKakicaModel
+    public class Owner : IJokJaBreModel
     {
-        [Shown(Dto.Response)]
-        public int Id { get; set; }
-
-        [Shown]
+        public long Id { get; set; }
         public string Name { get; set; }
 
-
-
         public int LoginId { get; set; }
-        public virtual IdentityUser Login { get; set; }
+        public IdentityUser Login { get; set; }
 
 
-        public virtual ICollection<OwnerPooper> OwnerPoopers { get; set; }
+        public ICollection<OwnerPooper> OwnerPoopers { get; set; }
     }
 
     public class OwnerConfiguration : IEntityTypeConfiguration<Owner>

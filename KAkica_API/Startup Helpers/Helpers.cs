@@ -1,4 +1,7 @@
-﻿using KAkica.Domain.Models;
+﻿using JokJaBre.Core.Objects.Service;
+using JokJaBre.Core.Repository;
+using JokJaBre.Core.Service;
+using KAkica.Domain.Models;
 using KAkica.Service.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -17,8 +20,9 @@ namespace KAkica.API.Startup_Helpers
     {
         public static void AddScopedServices(this IServiceCollection services)
         {
-            services.AddTransient<AppUserService>();
-            services.AddTransient<PooperService>();
+            services.AddTransient<IJokJaBreRepository<Pooper>, JokJaBreRepository<Pooper>>();
+            services.AddTransient<IJokJaBreService<Pooper> , JokJaBreService<Pooper>>();
+
             services.AddTransient<LoginService>();
         }
 

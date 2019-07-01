@@ -34,7 +34,7 @@ namespace KAkica.API.Controllers
 
         [HttpPost("register", Name = "Register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register([FromBody] AppUserRequest request)
+        public async Task<IActionResult> Register([FromBody] AuthRequest request)
         {
             return Evaluate(await m_loginService.Register(request));
         }

@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using KAkica.API.Startup_Helpers;
-using KAkica.Communication.Mappings;
 using KAkica.Domain.Models;
-using KAkica.Service.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace KAkica_API
@@ -33,12 +24,12 @@ namespace KAkica_API
         public void ConfigureServices(IServiceCollection services)
 
         {
-            services.AddDbContext<KAkicaDbContext>(opts => 
+            services.AddDbContext<DbContext, KAkicaDbContext>(opts => 
                 opts.UseSqlServer(Configuration.GetConnectionString("KAkicaDbContext")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddAutoMapper(typeof(Startup), typeof(AutoMapperProfile));
+            //services.AddAutoMapper(typeof(Startup), typeof(AutoMapperProfile));
 
 
             services.AddScopedServices();
