@@ -1,4 +1,4 @@
-﻿using JokJaBre.Core.Objects.Service;
+﻿using JokJaBre.Core.Identity;
 using JokJaBre.Core.Repository;
 using JokJaBre.Core.Service;
 using KAkica.Domain.Models;
@@ -8,11 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace KAkica.API.Startup_Helpers
 {
@@ -22,6 +18,16 @@ namespace KAkica.API.Startup_Helpers
         {
             services.AddTransient<IJokJaBreRepository<Pooper>, JokJaBreRepository<Pooper>>();
             services.AddTransient<IJokJaBreService<Pooper> , JokJaBreService<Pooper>>();
+
+            services.AddTransient<IJokJaBreRepository<KakicaUser> , JokJaBreRepository<KakicaUser>>();
+            services.AddTransient<IJokJaBreService<KakicaUser> , JokJaBreService<KakicaUser>>();
+
+            services.AddTransient<IJokJaBreRepository<Owner>, JokJaBreRepository<Owner>>();
+            services.AddTransient<IJokJaBreService<Owner>, JokJaBreService<Owner>>();
+
+            services.AddTransient<IJokJaBreIdentityRepository<KakicaUser>, JokJaBreIdentityRepository<KakicaUser>>();
+            services.AddTransient<IJokJaBreIdentityService<KakicaUser>, JokJaBreIdentityService<KakicaUser>>();
+
 
             services.AddTransient<LoginService>();
         }

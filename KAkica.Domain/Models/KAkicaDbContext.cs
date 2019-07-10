@@ -7,7 +7,7 @@ using System.Text;
 
 namespace KAkica.Domain.Models
 {
-    public class KAkicaDbContext : IdentityDbContext<IdentityUser>
+    public class KAkicaDbContext : DbContext
     {
 
         public KAkicaDbContext(DbContextOptions<KAkicaDbContext> options) : base(options)
@@ -18,6 +18,7 @@ namespace KAkica.Domain.Models
         public DbSet<Pooper> Poopers { get; set; }
         public DbSet<Owner> Owner { get; set; }
         public DbSet<OwnerPooper> OwnerPoopers { get; set; }
+        public DbSet<KakicaUser> Users { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,6 +35,7 @@ namespace KAkica.Domain.Models
             modelBuilder.ApplyConfiguration(new PooperConfiguration());
             modelBuilder.ApplyConfiguration(new OwnerConfiguration());
             modelBuilder.ApplyConfiguration(new OwnerPooperConfiguration());
+            modelBuilder.ApplyConfiguration(new KakicaUserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

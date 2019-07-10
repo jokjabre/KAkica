@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JokJaBre.Core.Controller;
-using JokJaBre.Core.Objects;
+﻿using JokJaBre.Core.Controller;
 using JokJaBre.Core.Service;
-using KAkica.Communication.PooperViewModels;
+using KAkica.API.Request;
+using KAkica.API.Response;
 using KAkica.Domain.Models;
-using KAkica.Service.Implementation;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace KAkica.API.Controllers
 {
@@ -17,26 +15,25 @@ namespace KAkica.API.Controllers
     [ApiController]
     public class PooperController : JokJaBreController<Pooper>
     {
-        public PooperController(IJokJaBreService<Pooper> service) : base(service)
-        {
-        }
+        public PooperController(IJokJaBreService<Pooper> service) : base(service) { }
 
         [HttpPost]
         public IActionResult Create(PooperRequest request)
         {
-            return Ok(m_service.Create<PooperRequest, PooperResponse>(request));
+            return CheckState(m_service.Create<PooperRequest, PooperResponse>(request));
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetAll()
         {
-            return Ok(m_service.GetAll<PooperResponse>());
+            return CheckState(m_service.GetAll<PooperResponse>());
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
-            return Ok(m_service.GetById<PooperResponse>(id));
+            return CheckState(m_service.GetById<PooperResponse, long>(id));
         }
 
 

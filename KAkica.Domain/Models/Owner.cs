@@ -13,8 +13,8 @@ namespace KAkica.Domain.Models
         public long Id { get; set; }
         public string Name { get; set; }
 
-        public int LoginId { get; set; }
-        public IdentityUser Login { get; set; }
+        public string KakicaUserRef { get; set; }
+        public KakicaUser KakicaUser { get; set; }
 
 
         public ICollection<OwnerPooper> OwnerPoopers { get; set; }
@@ -26,6 +26,8 @@ namespace KAkica.Domain.Models
         {
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+
         }
     }
 }

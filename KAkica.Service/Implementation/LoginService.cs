@@ -11,51 +11,30 @@ using Microsoft.Extensions.Configuration;
 using KAkica.Communication.Auth;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using KAkica.Domain.Models;
 
 namespace KAkica.Service.Implementation
 {
     public class LoginService
     {
-        private UserManager<IdentityUser> m_userManager;
+        private UserManager<KakicaUser> m_userManager;
         private IConfiguration m_configuration;
-        private IMapper m_mapper;
 
-        public LoginService(UserManager<IdentityUser> userManager, IConfiguration configuration, IMapper mapper)
+        public LoginService(UserManager<KakicaUser> userManager, IConfiguration configuration)
         {
             m_userManager = userManager;
             m_configuration = configuration;
-            m_mapper = mapper;
         }
 
-        public async Task<AuthResponse> Register(AuthRequest request)
-        {
-            var user = new IdentityUser
-            {
-                Email = request.Email,
-                UserName = request.Username,
-                SecurityStamp = Guid.NewGuid().ToString()
-            };
-
-            var result = await m_userManager.CreateAsync(user, request.Password);
-            if (result.Succeeded)
-            {
-                await m_userManager.AddToRoleAsync(user, UserRoles.Owner.ToString());
-
-                return m_mapper.Map<AuthResponse>(user);
-            }
-
-            return null;
-        }
-
-        public async Task<AuthResponse> Login(AuthRequest request)
+        public async Task<AuthResponse> Login(string username, string email, string password)
         {
             var user = 
-                await m_userManager.FindByNameAsync(request.Username) ?? 
-                await m_userManager.FindByEmailAsync(request.Username);
-            if (user != null && await m_userManager.CheckPasswordAsync(user, request.Password))
+                await m_userManager.FindByNameAsync(username) ?? 
+                await m_userManager.FindByEmailAsync(email);
+            if (user != null && await m_userManager.CheckPasswordAsync(user, password))
             {
                 var claim = new[] {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName)
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Username)
                 };
                 var signinKey = new SymmetricSecurityKey(
                   Encoding.UTF8.GetBytes(m_configuration["Jwt:SigningKey"]));

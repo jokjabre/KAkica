@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KAkica.Communication.PooperViewModels
+namespace KAkica.API.Response
 {
     public class PooperResponse : JokJaBreResponse<Pooper>
     {

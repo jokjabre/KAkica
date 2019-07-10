@@ -3,14 +3,16 @@ using KAkica.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KAkica.Domain.Migrations
 {
     [DbContext(typeof(KAkicaDbContext))]
-    partial class KAkicaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190704184227_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,42 +20,17 @@ namespace KAkica.Domain.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("KAkica.Domain.Models.KakicaUser", b =>
-                {
-                    b.Property<string>("Username")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Password");
-
-                    b.HasKey("Username");
-
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
-
-                    b.HasIndex("Username")
-                        .IsUnique();
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("KAkica.Domain.Models.Owner", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("KakicaUserRef");
+                    b.Property<int>("LoginId");
 
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("KakicaUserRef")
-                        .IsUnique()
-                        .HasFilter("[KakicaUserRef] IS NOT NULL");
 
                     b.ToTable("Owner");
                 });
@@ -84,13 +61,6 @@ namespace KAkica.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Poopers");
-                });
-
-            modelBuilder.Entity("KAkica.Domain.Models.Owner", b =>
-                {
-                    b.HasOne("KAkica.Domain.Models.KakicaUser", "KakicaUser")
-                        .WithOne("Owner")
-                        .HasForeignKey("KAkica.Domain.Models.Owner", "KakicaUserRef");
                 });
 
             modelBuilder.Entity("KAkica.Domain.Models.OwnerPooper", b =>

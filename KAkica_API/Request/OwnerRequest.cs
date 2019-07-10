@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KAkica.Communication.OwnerViewModels
+namespace KAkica.API.Request
 {
     public class OwnerRequest : JokJaBreRequest<Owner>
     {
-        public override void SetTo(IJokJaBreModel obj)
+        public override void SetTo(Owner obj)
         {
         }
     }
