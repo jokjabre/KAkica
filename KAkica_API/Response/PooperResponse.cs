@@ -1,5 +1,5 @@
-﻿using JokJaBre.Core.Objects;
-using KAkica.Communication.AppUser;
+﻿using JokJaBre.Core.API.Dto;
+using JokJaBre.Core.Objects;
 using KAkica.Domain.Models;
 using System;
 using System.Collections.Generic;

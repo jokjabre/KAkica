@@ -1,10 +1,7 @@
 ﻿using JokJaBre.Core.Objects;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace KAkica.Domain.Models
 {

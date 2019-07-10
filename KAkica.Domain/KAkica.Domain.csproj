@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\JokJaBre.Core.API\JokJaBre.Core.API.csproj" />
     <ProjectReference Include="..\..\JokJaBre.Core.Identity\JokJaBre.Core.Identity.csproj" />
-    <ProjectReference Include="..\..\JokJaBre.Core\JokJaBre.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

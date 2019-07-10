@@ -1,21 +1,16 @@
-﻿using AutoMapper;
+﻿using JokJaBre.Core.Objects;
 using KAkica.API.Startup_Helpers;
-using KAkica.Communication.Auth;
 using KAkica.Domain.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace KAkica_API
 {

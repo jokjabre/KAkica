@@ -1,8 +1,6 @@
-﻿using JokJaBre.Core.Identity;
-using JokJaBre.Core.Repository;
-using JokJaBre.Core.Service;
+﻿using JokJaBre.Core.API;
+using JokJaBre.Core.Identity;
 using KAkica.Domain.Models;
-using KAkica.Service.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -28,8 +26,6 @@ namespace KAkica.API.Startup_Helpers
             services.AddTransient<IJokJaBreIdentityRepository<KakicaUser>, JokJaBreIdentityRepository<KakicaUser>>();
             services.AddTransient<IJokJaBreIdentityService<KakicaUser>, JokJaBreIdentityService<KakicaUser>>();
 
-
-            services.AddTransient<LoginService>();
         }
 
         public static void AddJwt(this IServiceCollection services, IConfiguration configuration)

@@ -1,13 +1,9 @@
-﻿using JokJaBre.Core.Controller;
-using JokJaBre.Core.Service;
+﻿using JokJaBre.Core.API;
 using KAkica.API.Request;
 using KAkica.API.Response;
 using KAkica.Domain.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace KAkica.API.Controllers
 {

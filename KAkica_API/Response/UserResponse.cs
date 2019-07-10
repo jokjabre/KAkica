@@ -1,4 +1,5 @@
 ﻿using JokJaBre.Core.Identity;
+using JokJaBre.Core.Objects;
 using KAkica.Domain.Models;
 
 namespace KAkica.API.Response
