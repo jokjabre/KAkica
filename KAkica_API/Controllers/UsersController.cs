@@ -1,7 +1,7 @@
 ﻿using JokJaBre.Core.Identity;
 using JokJaBre.Core.API;
-using KAkica.API.Request;
-using KAkica.API.Response;
+using KAkica.Communication.Request;
+using KAkica.Communication.Response;
 using KAkica.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +13,7 @@ namespace KAkica.API.Controllers
     public class UsersController : JokJaBreIdentityController<KakicaUser, UserRequest, UserResponse>
     {
 
-        public UsersController(IJokJaBreIdentityService<KakicaUser> userService, IConfiguration config) : base(userService)
+        public UsersController(IJokJaBreIdentityService<KakicaUser> userService) : base(userService)
         {
         }
 

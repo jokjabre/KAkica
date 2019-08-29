@@ -1,9 +1,9 @@
 ﻿using JokJaBre.Core.API;
-using KAkica.API.Request;
-using KAkica.API.Response;
 using KAkica.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using KAkica.Communication.Request;
+using KAkica.Communication.Response;
 
 namespace KAkica.API.Controllers
 {
@@ -20,7 +20,6 @@ namespace KAkica.API.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public IActionResult GetAll()
         {
             return CheckState(m_service.GetAll<PooperResponse>());

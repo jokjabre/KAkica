@@ -2,7 +2,7 @@
 using JokJaBre.Core.Objects;
 using KAkica.Domain.Models;
 
-namespace KAkica.API.Response
+namespace KAkica.Communication.Response
 {
     public class UserResponse : JokJaBreIdentityResponse<KakicaUser>
     {

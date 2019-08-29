@@ -2,7 +2,7 @@
 using JokJaBre.Core.Objects;
 using KAkica.Domain.Models;
 
-namespace KAkica.API.Request
+namespace KAkica.Communication.Request
 {
     public class UserRequest : JokJaBreIdentityRequest<KakicaUser>
     {

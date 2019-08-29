@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JokJaBre.Core.API" Version="1.0.8" />
+    <PackageReference Include="JokJaBre.Core.Identity" Version="1.0.8" />
+    <PackageReference Include="JokJaBre.Core.Objects" Version="1.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KAkica.Domain\KAkica.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Request\OwnerRequest.cs">
+      <Generator></Generator>
+    </Compile>
+    <Compile Update="Request\PooperRequest.cs">
+      <Generator></Generator>
+    </Compile>
+    <Compile Update="Request\UserRequest.cs">
+      <Generator></Generator>
+    </Compile>
+    <Compile Update="Response\OwnerResponse.cs">
+      <Generator></Generator>
+    </Compile>
+    <Compile Update="Response\PooperResponse.cs">
+      <Generator></Generator>
+    </Compile>
+    <Compile Update="Response\UserResponse.cs">
+      <Generator></Generator>
+    </Compile>
+  </ItemGroup>
+
+</Project>

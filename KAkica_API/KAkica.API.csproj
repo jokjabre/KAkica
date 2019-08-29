@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KAkica.Communication\KAkica.Communication.csproj" />
     <ProjectReference Include="..\KAkica.Domain\KAkica.Domain.csproj" />
   </ItemGroup>
 

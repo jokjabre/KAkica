@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KAkica.API.Response
+namespace KAkica.Communication.Response
 {
     public class OwnerResponse : JokJaBreResponse<Owner>
     {
