@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JokJaBre.Core.API" Version="1.0.8" />
-    <PackageReference Include="JokJaBre.Core.Identity" Version="1.0.8" />
-    <PackageReference Include="JokJaBre.Core.Objects" Version="1.0.8" />
+    <PackageReference Include="JokJaBre.Core.API" Version="1.0.9" />
+    <PackageReference Include="JokJaBre.Core.Identity" Version="1.0.9" />
+    <PackageReference Include="JokJaBre.Core.Objects" Version="1.0.9" />
   </ItemGroup>
 
   <ItemGroup>

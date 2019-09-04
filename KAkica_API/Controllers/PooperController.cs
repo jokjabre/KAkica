@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using KAkica.Communication.Request;
 using KAkica.Communication.Response;
+using System.Threading.Tasks;
 
 namespace KAkica.API.Controllers
 {
@@ -14,9 +15,9 @@ namespace KAkica.API.Controllers
         public PooperController(IJokJaBreService<Pooper> service) : base(service) { }
 
         [HttpPost]
-        public IActionResult Create(PooperRequest request)
+        public async Task<IActionResult> Create(PooperRequest request)
         {
-            return CheckState(m_service.Create<PooperRequest, PooperResponse>(request));
+            return CheckState(await m_service.Create<PooperRequest, PooperResponse>(request));
         }
 
         [HttpGet]
@@ -26,11 +27,15 @@ namespace KAkica.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(long id)
+        public async Task<IActionResult> GetById(long id)
         {
-            return CheckState(m_service.GetById<PooperResponse, long>(id));
+            return CheckState(await m_service.GetById<PooperResponse, long>(id));
         }
 
-
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            return CheckState(await m_service.Delete(id));
+        }
     }
 }

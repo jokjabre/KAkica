@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KAkica.Communication", "KAk
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{D83F62B1-97C6-4A84-9894-AA3A45958920}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K_Akica.Blazor", "K_Akica.Blazor\K_Akica.Blazor.csproj", "{BA9CA1E2-7507-414D-B8DF-283A75C948BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,9 +31,16 @@ Global
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD} = {D83F62B1-97C6-4A84-9894-AA3A45958920}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C5681AD-F089-4366-AF70-F54FEE5B37A7}

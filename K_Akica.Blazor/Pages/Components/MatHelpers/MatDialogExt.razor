@@ -1,0 +1,40 @@
+﻿@namespace K_Akica.Blazor.Pages.Components
+@using K_Akica.Blazor.Data
+
+@if(IsOpen)
+{
+
+}
+    <MatDialog @bind-IsOpen="@IsOpen">
+        <MatDialogTitle>@Title</MatDialogTitle>
+        <MatDialogContent>
+            @ChildContent
+        </MatDialogContent>
+        <MatDialogActions>
+            <MatButton OnClick="@Close">@CancelText</MatButton>
+            <MatButton OnClick="@OkClicked">@OkText</MatButton>
+        </MatDialogActions>
+    </MatDialog>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public string Title { get; set; }
+
+    [Parameter] public string OkText { get; set; } = "OK";
+    [Parameter] public string CancelText { get; set; } = "Cancel";
+
+    [Parameter] public AsyncVoidEventHandler OnOkClicked { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+
+    void Close()
+    {
+        IsOpen = false;
+    }
+
+    void OkClicked()
+    {
+        OnOkClicked?.Invoke();
+    }
+}
