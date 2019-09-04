@@ -1,0 +1,15 @@
+﻿@namespace K_Akica.Blazor.Pages.Components
+
+
+<div class="mat-layout-grid-cell @SpanText">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public int Span { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    private string SpanText =>
+        Span == 0 ? string.Empty :
+        $"mat-layout-grid-cell-span-{Span}";
+}

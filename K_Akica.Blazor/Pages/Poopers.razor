@@ -1,0 +1,24 @@
+﻿@page "/poopers"
+
+@using K_Akica.Blazor.Data
+@using KAkica.Communication.Response
+@using KAkica.Communication.Request
+@using K_Akica.Blazor.Pages.Components
+@using K_Akica.Blazor.Data.ViewModels
+@using System.Web
+
+@inject PoopersViewModel Model
+
+
+    <PoopersList Model="@Model" />
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Model.Reload();
+    }
+
+}
+
+

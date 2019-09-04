@@ -1,0 +1,21 @@
+﻿@namespace K_Akica.Blazor.Pages.Components
+
+@if (InnerOnly)
+{
+    <div class="mat-layout-grid-inner">
+        @ChildContent
+    </div>
+}
+else
+{
+    <div class="mat-layout-grid">
+        <div class="mat-layout-grid-inner">
+            @ChildContent
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool InnerOnly { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}

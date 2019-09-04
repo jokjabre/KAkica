@@ -1,0 +1,98 @@
+﻿@using K_Akica.Blazor.Data.ViewModels
+@using KAkica.Communication.Request
+@using KAkica.Communication.Response
+
+@if (!Model.IsLoaded)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <MatGrid>
+
+        <MatCell Span="4">
+
+            <MatHeadline3>Poopers</MatHeadline3>
+            <MatButton Outlined="@true" OnClick="@ShowDialog">New</MatButton>
+            <MatButton Outlined="@true" OnClick="@DeleteSelected">Delete</MatButton>
+
+            <MatList SingleSelection="true" @onkeydown="@ListKeyPressed">
+                @foreach (var pooper in Model.AllPoopers)
+                {
+                    <MatListItem OnClick="@(() => SelectionChanged(pooper))">
+                        @pooper.Name
+                    </MatListItem>
+                }
+            </MatList>
+
+        </MatCell>
+    </MatGrid>
+
+    <MatDialogExt @bind-IsOpen="@m_dialogIsOpen" Title="Create new pooper" OnOkClicked="@DialogOkClicked">
+        <p>Name:</p>
+        <MatTextField @bind-Value="@m_newPooper.Name"></MatTextField>
+    </MatDialogExt>
+
+    @*//the original implementation of MatDialog, working fine, but not used in order to practice the binding between components
+        <MatDialog @bind-IsOpen="@m_dialogIsOpen">
+            <MatDialogTitle>Create new pooper</MatDialogTitle>
+            <MatDialogContent>
+                <p>Name:</p>
+                <MatTextField @bind-Value="@m_newPooper.Name"></MatTextField>
+            </MatDialogContent>
+            <MatDialogActions>
+                <MatButton OnClick="@(() => { m_dialogIsOpen = false; })">Cancel</MatButton>
+                <MatButton OnClick="@(async () => await Model.CreateNew(m_newPooper))">OK</MatButton>
+            </MatDialogActions>
+        </MatDialog>*@
+}
+
+
+@code {
+    [Parameter] public PoopersViewModel Model { get; set; }
+
+    private PooperResponse m_selectedPooper;
+    private PooperRequest m_newPooper = new PooperRequest();
+
+    private bool m_dialogIsOpen;
+
+
+    protected override void OnInitialized()
+    {
+        Model.OnRefreshNeeded += (sender, e) => StateHasChanged();
+    }
+
+    void SelectionChanged(PooperResponse pooper)
+    {
+        m_selectedPooper = pooper;
+    }
+    async Task DeleteSelected()
+    {
+        await Model.Delete(m_selectedPooper);
+    }
+
+    void ShowDialog()
+    {
+        m_newPooper = new PooperRequest();
+        m_dialogIsOpen = true;
+    }
+
+    async Task DialogOkClicked()
+    {
+        //first, close dialog, then call create, 
+        //since the refresh triggered from create executes before the property is set to false, 
+        //thefore making the dialog visible once more
+        m_dialogIsOpen = false;
+        await Model.CreateNew(m_newPooper);
+    }
+
+    async Task ListKeyPressed(UIKeyboardEventArgs args)
+    {
+        if(args.Key == "Delete")
+        {
+            await DeleteSelected();
+        }
+    }
+
+}

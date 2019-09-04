@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace KAkica.Domain.Models
 {
-    public class KAkicaDbContext : IdentityDbContext<IdentityUser>
+    public class KAkicaDbContext : DbContext
     {
 
         public KAkicaDbContext(DbContextOptions<KAkicaDbContext> options) : base(options)
@@ -15,9 +10,10 @@ namespace KAkica.Domain.Models
             
         }
 
-        public virtual DbSet<Pooper> Poopers { get; set; }
-        public virtual DbSet<AppUser> AppUsers { get; set; }
-        public virtual DbSet<AppUserPooper> AppUserPoopers { get; set; }
+        public DbSet<Pooper> Poopers { get; set; }
+        public DbSet<Owner> Owner { get; set; }
+        public DbSet<OwnerPooper> OwnerPoopers { get; set; }
+        public DbSet<KakicaUser> Users { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,8 +28,9 @@ namespace KAkica.Domain.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PooperConfiguration());
-            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
-            modelBuilder.ApplyConfiguration(new AppUserPooperConfiguration());
+            modelBuilder.ApplyConfiguration(new OwnerConfiguration());
+            modelBuilder.ApplyConfiguration(new OwnerPooperConfiguration());
+            modelBuilder.ApplyConfiguration(new KakicaUserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

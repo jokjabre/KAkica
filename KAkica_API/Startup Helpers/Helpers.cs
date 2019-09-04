@@ -1,15 +1,12 @@
-﻿using KAkica.Domain.Models;
-using KAkica.Service.Implementation;
+﻿using JokJaBre.Core.API;
+using JokJaBre.Core.Identity;
+using KAkica.Domain.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace KAkica.API.Startup_Helpers
 {
@@ -17,9 +14,18 @@ namespace KAkica.API.Startup_Helpers
     {
         public static void AddScopedServices(this IServiceCollection services)
         {
-            services.AddTransient<AppUserService>();
-            services.AddTransient<PooperService>();
-            services.AddTransient<LoginService>();
+            services.AddTransient<IJokJaBreRepository<Pooper>, JokJaBreRepository<Pooper>>();
+            services.AddTransient<IJokJaBreService<Pooper> , JokJaBreService<Pooper>>();
+
+            services.AddTransient<IJokJaBreRepository<KakicaUser> , JokJaBreRepository<KakicaUser>>();
+            services.AddTransient<IJokJaBreService<KakicaUser> , JokJaBreService<KakicaUser>>();
+
+            services.AddTransient<IJokJaBreRepository<Owner>, JokJaBreRepository<Owner>>();
+            services.AddTransient<IJokJaBreService<Owner>, JokJaBreService<Owner>>();
+
+            services.AddTransient<IJokJaBreIdentityRepository<KakicaUser>, JokJaBreIdentityRepository<KakicaUser>>();
+            services.AddTransient<IJokJaBreIdentityService<KakicaUser>, JokJaBreIdentityService<KakicaUser>>();
+
         }
 
         public static void AddJwt(this IServiceCollection services, IConfiguration configuration)
