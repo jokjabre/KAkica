@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EmbeddedBlazorContent" Version="1.4.0" />
-    <PackageReference Include="MatBlazor" Version="1.6.3" />
+    <PackageReference Include="EmbeddedBlazorContent" Version="1.7.0" />
+    <PackageReference Include="MatBlazor" Version="1.7.2" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0-preview8.19405.11">
       <PrivateAssets>all</PrivateAssets>
