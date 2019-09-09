@@ -14,6 +14,7 @@ namespace KAkica.Domain.Models
         public DbSet<Owner> Owner { get; set; }
         public DbSet<OwnerPooper> OwnerPoopers { get; set; }
         public DbSet<KakicaUser> Users { get; set; }
+        public DbSet<Activity> Activities { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,6 +32,7 @@ namespace KAkica.Domain.Models
             modelBuilder.ApplyConfiguration(new OwnerConfiguration());
             modelBuilder.ApplyConfiguration(new OwnerPooperConfiguration());
             modelBuilder.ApplyConfiguration(new KakicaUserConfiguration());
+            modelBuilder.ApplyConfiguration(new ActivityConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

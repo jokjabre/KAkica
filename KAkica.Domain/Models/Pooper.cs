@@ -12,6 +12,7 @@ namespace KAkica.Domain.Models
         public long Id { get; set; }
         public string Name { get; set; }
 
+        public ICollection<Activity> Activities { get; set; }
         public ICollection<OwnerPooper> OwnerPoopers { get; set; }
     }
 
@@ -25,6 +26,9 @@ namespace KAkica.Domain.Models
             builder.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
+
+            builder.HasMany(e => e.Activities)
+                .WithOne(e => e.Pooper);
 
             //builder.HasData(new[] {
             //        new Pooper() {Id = 1, Name = "pooper1"},

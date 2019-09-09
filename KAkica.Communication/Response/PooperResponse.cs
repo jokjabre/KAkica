@@ -11,6 +11,7 @@ namespace KAkica.Communication.Response
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public IEnumerable<Activity> Activities { get; set; } = Array.Empty<Activity>();
 
         public override void SetFrom(IJokJaBreModel model)
         {
