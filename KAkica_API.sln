@@ -13,34 +13,72 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{D8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K_Akica.Blazor", "K_Akica.Blazor\K_Akica.Blazor.csproj", "{BA9CA1E2-7507-414D-B8DF-283A75C948BD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JokJaBre.Core", "JokJaBre.Core", "{932B8FD6-CF5F-4470-B286-7C36DF0F6F61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokJaBre.Core.API", "..\JokJaBre.Core\JokJaBre.Core.API\JokJaBre.Core.API.csproj", "{89BE4E2A-6828-4148-8405-7ABEF1574E9D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokJaBre.Core.Identity", "..\JokJaBre.Core\JokJaBre.Core.Identity\JokJaBre.Core.Identity.csproj", "{FF510F02-EBC3-460A-A542-804AC90EC82D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokJaBre.Core.Objects", "..\JokJaBre.Core\JokJaBre.Core.Objects\JokJaBre.Core.Objects.csproj", "{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Release-NuGet|Any CPU = Release-NuGet|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{89C551E1-FBF0-478B-A7DB-D6FE714639AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89C551E1-FBF0-478B-A7DB-D6FE714639AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C551E1-FBF0-478B-A7DB-D6FE714639AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C551E1-FBF0-478B-A7DB-D6FE714639AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C551E1-FBF0-478B-A7DB-D6FE714639AA}.Release-NuGet|Any CPU.ActiveCfg = Release|Any CPU
+		{89C551E1-FBF0-478B-A7DB-D6FE714639AA}.Release-NuGet|Any CPU.Build.0 = Release|Any CPU
 		{FFEF7DA2-35AB-4732-8388-42461B4797CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFEF7DA2-35AB-4732-8388-42461B4797CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFEF7DA2-35AB-4732-8388-42461B4797CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFEF7DA2-35AB-4732-8388-42461B4797CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFEF7DA2-35AB-4732-8388-42461B4797CA}.Release-NuGet|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEF7DA2-35AB-4732-8388-42461B4797CA}.Release-NuGet|Any CPU.Build.0 = Release|Any CPU
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Release-NuGet|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B1CA2A-65B4-4243-AF5B-5A5B41444ADD}.Release-NuGet|Any CPU.Build.0 = Release|Any CPU
 		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Release-NuGet|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9CA1E2-7507-414D-B8DF-283A75C948BD}.Release-NuGet|Any CPU.Build.0 = Release|Any CPU
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D}.Release-NuGet|Any CPU.ActiveCfg = Release-NuGet|Any CPU
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D}.Release-NuGet|Any CPU.Build.0 = Release-NuGet|Any CPU
+		{FF510F02-EBC3-460A-A542-804AC90EC82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF510F02-EBC3-460A-A542-804AC90EC82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF510F02-EBC3-460A-A542-804AC90EC82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF510F02-EBC3-460A-A542-804AC90EC82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF510F02-EBC3-460A-A542-804AC90EC82D}.Release-NuGet|Any CPU.ActiveCfg = Release-NuGet|Any CPU
+		{FF510F02-EBC3-460A-A542-804AC90EC82D}.Release-NuGet|Any CPU.Build.0 = Release-NuGet|Any CPU
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}.Release-NuGet|Any CPU.ActiveCfg = Release-NuGet|Any CPU
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85}.Release-NuGet|Any CPU.Build.0 = Release-NuGet|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BA9CA1E2-7507-414D-B8DF-283A75C948BD} = {D83F62B1-97C6-4A84-9894-AA3A45958920}
+		{89BE4E2A-6828-4148-8405-7ABEF1574E9D} = {932B8FD6-CF5F-4470-B286-7C36DF0F6F61}
+		{FF510F02-EBC3-460A-A542-804AC90EC82D} = {932B8FD6-CF5F-4470-B286-7C36DF0F6F61}
+		{0DD4654B-EF65-4EE1-A061-0D2550D7BE85} = {932B8FD6-CF5F-4470-B286-7C36DF0F6F61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C5681AD-F089-4366-AF70-F54FEE5B37A7}

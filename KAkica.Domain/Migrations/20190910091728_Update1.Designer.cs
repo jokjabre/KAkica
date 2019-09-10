@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KAkica.Domain.Migrations
 {
     [DbContext(typeof(KAkicaDbContext))]
-    [Migration("20190909225541_addedActivity")]
-    partial class addedActivity
+    [Migration("20190910091728_Update1")]
+    partial class Update1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,13 @@ namespace KAkica.Domain.Migrations
 
             modelBuilder.Entity("KAkica.Domain.Models.Activity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Poop");
 
-                    b.Property<long?>("PooperId");
+                    b.Property<long>("PooperId");
 
                     b.Property<DateTime>("Timestamp")
                         .ValueGeneratedOnAdd();
@@ -115,7 +115,8 @@ namespace KAkica.Domain.Migrations
                 {
                     b.HasOne("KAkica.Domain.Models.Pooper", "Pooper")
                         .WithMany("Activities")
-                        .HasForeignKey("PooperId");
+                        .HasForeignKey("PooperId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("KAkica.Domain.Models.Owner", b =>

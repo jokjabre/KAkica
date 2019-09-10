@@ -23,6 +23,9 @@ namespace KAkica.API.Startup_Helpers
             services.AddTransient<IJokJaBreRepository<Owner>, JokJaBreRepository<Owner>>();
             services.AddTransient<IJokJaBreService<Owner>, JokJaBreService<Owner>>();
 
+            services.AddTransient<IJokJaBreRepository<Activity>, JokJaBreRepository<Activity>>();
+            services.AddTransient<IJokJaBreService<Activity>, JokJaBreService<Activity>>();
+
             services.AddTransient<IJokJaBreIdentityRepository<KakicaUser>, JokJaBreIdentityRepository<KakicaUser>>();
             services.AddTransient<IJokJaBreIdentityService<KakicaUser>, JokJaBreIdentityService<KakicaUser>>();
 

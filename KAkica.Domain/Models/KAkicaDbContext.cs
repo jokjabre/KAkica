@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace KAkica.Domain.Models
 {
@@ -35,6 +38,29 @@ namespace KAkica.Domain.Models
             modelBuilder.ApplyConfiguration(new ActivityConfiguration());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+
+        private void SetTimestamp()
+        {
+            foreach (var change in ChangeTracker.Entries<Activity>())
+            {
+                if (change.State == EntityState.Added)
+                {
+                    change.Entity.Timestamp = DateTime.Now;
+                }
+            }
+        }
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            SetTimestamp();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            SetTimestamp();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }

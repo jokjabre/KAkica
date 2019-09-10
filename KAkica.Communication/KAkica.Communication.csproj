@@ -5,12 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JokJaBre.Core.API" Version="1.0.9" />
-    <PackageReference Include="JokJaBre.Core.Identity" Version="1.0.9" />
-    <PackageReference Include="JokJaBre.Core.Objects" Version="1.0.9" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\JokJaBre.Core\JokJaBre.Core.API\JokJaBre.Core.API.csproj" />
+    <ProjectReference Include="..\..\JokJaBre.Core\JokJaBre.Core.Identity\JokJaBre.Core.Identity.csproj" />
+    <ProjectReference Include="..\..\JokJaBre.Core\JokJaBre.Core.Objects\JokJaBre.Core.Objects.csproj" />
     <ProjectReference Include="..\KAkica.Domain\KAkica.Domain.csproj" />
   </ItemGroup>
 
