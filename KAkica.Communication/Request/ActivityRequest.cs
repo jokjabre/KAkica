@@ -11,8 +11,6 @@ namespace KAkica.Communication.Request
         public bool Poop { get; set; }
         public bool Whizz { get; set; }
 
-        public long PooperId { get; set; }
-
         public override void SetTo(Activity obj)
         {
             

@@ -6,12 +6,13 @@ using KAkica.Communication.Request;
 using KAkica.Communication.Response;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using KAkica.API.Services;
 
 namespace KAkica.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PooperController : JokJaBreController<Pooper>
+    public class PooperController : JokJaBreController<Pooper, PooperService>
     {
         public PooperController(IJokJaBreService<Pooper> service) : base(service)
         {
@@ -40,6 +41,12 @@ namespace KAkica.API.Controllers
         public async Task<IActionResult> Delete(long id)
         {
             return CheckState(await m_service.Delete(id));
+        }
+
+        [HttpPost("{pooperId}/activity")]
+        public async Task<IActionResult> AddActivity(long pooperId, ActivityRequest activity)
+        {
+            return CheckState(await m_service.AddActivity(pooperId, activity));
         }
     }
 }

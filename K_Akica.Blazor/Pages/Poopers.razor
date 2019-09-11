@@ -9,8 +9,15 @@
 
 @inject PoopersViewModel Model
 
+<MatGrid>
+    <MatCell Span="4">
+        <PoopersList Model="@Model" />
+    </MatCell>
 
-    <PoopersList Model="@Model" />
+    <MatCell Span="4">
+
+    </MatCell>
+</MatGrid>
 
 @code {
 

@@ -14,13 +14,13 @@ namespace KAkica.Communication.Response
         public long Id { get; set; }
         public string Name { get; set; }
 
-        //add attributes here
         public IEnumerable<ActivityResponse> Activities { get; set; }
 
         public override void SetFrom(IJokJaBreModel model)
         {
             var pooper = model as Pooper;
             if (pooper == null) return;
+
             Activities = pooper.Activities.ToResponse<Activity, ActivityResponse>();
         }
     }

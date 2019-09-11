@@ -13,6 +13,7 @@ namespace KAkica.Domain.Models
         public bool Poop { get; set; }
         public bool Whizz { get; set; }
 
+        public string Comment { get; set; }
         public DateTime Timestamp { get; set; }
 
         public long PooperId { get; set; }

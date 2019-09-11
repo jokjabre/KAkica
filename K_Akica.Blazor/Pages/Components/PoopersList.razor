@@ -9,25 +9,20 @@
 else
 {
 
-    <MatGrid>
 
-        <MatCell Span="4">
 
-            <MatHeadline3>Poopers</MatHeadline3>
-            <MatButton Outlined="@true" OnClick="@ShowDialog">New</MatButton>
-            <MatButton Outlined="@true" OnClick="@DeleteSelected">Delete</MatButton>
+    <MatHeadline3>Poopers</MatHeadline3>
+    <MatButton Outlined="@true" OnClick="@ShowDialog">New</MatButton>
+    <MatButton Outlined="@true" OnClick="@DeleteSelected">Delete</MatButton>
 
-            <MatList SingleSelection="true" @onkeydown="@ListKeyPressed">
-                @foreach (var pooper in Model.AllPoopers)
-                {
-                    <MatListItem OnClick="@(() => SelectionChanged(pooper))">
-                        @pooper.Name
-                    </MatListItem>
-                }
-            </MatList>
-
-        </MatCell>
-    </MatGrid>
+    <MatList SingleSelection="true" @onkeydown="@ListKeyPressed">
+        @foreach (var pooper in Model.AllPoopers)
+        {
+            <MatListItem OnClick="@(() => SelectionChanged(pooper))">
+                @pooper.Name
+            </MatListItem>
+        }
+    </MatList>
 
     <MatDialogExt @bind-IsOpen="@m_dialogIsOpen" Title="Create new pooper" OnOkClicked="@DialogOkClicked">
         <p>Name:</p>
@@ -80,8 +75,8 @@ else
 
     async Task DialogOkClicked()
     {
-        //first, close dialog, then call create, 
-        //since the refresh triggered from create executes before the property is set to false, 
+        //first, close dialog, then call create,
+        //since the refresh triggered from create executes before the property is set to false,
         //thefore making the dialog visible once more
         m_dialogIsOpen = false;
         await Model.CreateNew(m_newPooper);
@@ -89,7 +84,7 @@ else
 
     async Task ListKeyPressed(KeyboardEventArgs args)
     {
-        if(args.Key == "Delete")
+        if (args.Key == "Delete")
         {
             await DeleteSelected();
         }
