@@ -1,6 +1,7 @@
 ﻿@using K_Akica.Blazor.Data.ViewModels
 @using KAkica.Communication.Request
 @using KAkica.Communication.Response
+@using System;
 
 @if (!Model.IsLoaded)
 {
@@ -15,12 +16,14 @@ else
     <MatButton Outlined="@true" OnClick="@ShowDialog">New</MatButton>
     <MatButton Outlined="@true" OnClick="@DeleteSelected">Delete</MatButton>
 
-    <MatList SingleSelection="true" @onkeydown="@ListKeyPressed">
-        @foreach (var pooper in Model.AllPoopers)
-        {
-            <MatListItem OnClick="@(() => SelectionChanged(pooper))">
-                @pooper.Name
-            </MatListItem>
+    <MatList SingleSelection="true" @onkeydown="@ListKeyPressed" >
+        @{
+            foreach (var pooper in Model.AllPoopers)
+            {
+                <MatListItem OnClick="@(() => @Model.ChangeSelection(pooper))">
+                    @pooper.Name
+                </MatListItem>
+            }
         }
     </MatList>
 
@@ -28,26 +31,12 @@ else
         <p>Name:</p>
         <MatTextField @bind-Value="@m_newPooper.Name"></MatTextField>
     </MatDialogExt>
-
-    @*//the original implementation of MatDialog, working fine, but not used in order to practice the binding between components
-        <MatDialog @bind-IsOpen="@m_dialogIsOpen">
-            <MatDialogTitle>Create new pooper</MatDialogTitle>
-            <MatDialogContent>
-                <p>Name:</p>
-                <MatTextField @bind-Value="@m_newPooper.Name"></MatTextField>
-            </MatDialogContent>
-            <MatDialogActions>
-                <MatButton OnClick="@(() => { m_dialogIsOpen = false; })">Cancel</MatButton>
-                <MatButton OnClick="@(async () => await Model.CreateNew(m_newPooper))">OK</MatButton>
-            </MatDialogActions>
-        </MatDialog>*@
 }
 
 
 @code {
     [Parameter] public PoopersViewModel Model { get; set; }
 
-    private PooperResponse m_selectedPooper;
     private PooperRequest m_newPooper = new PooperRequest();
 
     private bool m_dialogIsOpen;
@@ -58,14 +47,8 @@ else
         Model.OnRefreshNeeded += (sender, e) => StateHasChanged();
     }
 
-    void SelectionChanged(PooperResponse pooper)
-    {
-        m_selectedPooper = pooper;
-    }
-    async Task DeleteSelected()
-    {
-        await Model.Delete(m_selectedPooper);
-    }
+    async Task DeleteSelected() => await Model.DeleteSelected();
+    
 
     void ShowDialog()
     {

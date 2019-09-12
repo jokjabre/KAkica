@@ -3,6 +3,7 @@ using KAkica.Communication.Request;
 using KAkica.Communication.Response;
 using MatBlazor;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace K_Akica.Blazor.Data.ViewModels
         private readonly IMatToaster m_toaster;
         private readonly string m_pooperEndpoint = "Pooper";
 
+        private int m_selectedPooperIndex = 0;
+
         public PoopersViewModel(HttpClientService httpClientService, IMatToaster toaster)
         {
             m_httpClientService = httpClientService;
@@ -25,14 +28,15 @@ namespace K_Akica.Blazor.Data.ViewModels
 
 
         public IEnumerable<PooperResponse> AllPoopers { get; private set; }
+        public PooperResponse SelectedPooper { get; private set; }
         public bool IsLoaded => AllPoopers != null;
 
 
         public event EventHandler OnRefreshNeeded;
+        public event EventHandler OnSelectionChanged;
 
         private void ShowMessage(string message, MessageType messageType)
         {
-
             m_toaster.Add(message, messageType.AsMatType(), messageType.ToString());
         }
 
@@ -47,6 +51,11 @@ namespace K_Akica.Blazor.Data.ViewModels
             await Reload();
         }
 
+        public void ChangeSelection(PooperResponse selected)
+        {
+            SelectedPooper = selected;
+            OnSelectionChanged?.Invoke(null, EventArgs.Empty);
+        }
 
 
         public async Task Reload()
@@ -68,15 +77,15 @@ namespace K_Akica.Blazor.Data.ViewModels
             await InspectResult(result, $"Pooper \"{request.Name}\" created");
         }
 
-        public async Task Delete(PooperResponse pooper)
+        public async Task DeleteSelected(/*PooperResponse pooper*/)
         {
-            if(pooper == null)
+            if(SelectedPooper == null)
             {
                 ShowMessage("Nothing is selected for deletion", MessageType.Error);
             }
 
-            var result = await m_httpClientService.Delete<long, bool>(m_pooperEndpoint, pooper.Id);
-            await InspectResult(result, $"Pooper \"{pooper.Name}\" deleted");
+            var result = await m_httpClientService.Delete<long, bool>(m_pooperEndpoint, SelectedPooper.Id);
+            await InspectResult(result, $"Pooper \"{SelectedPooper.Name}\" deleted");
 
         }
     }

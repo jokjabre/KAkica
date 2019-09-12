@@ -1,0 +1,32 @@
+﻿@using K_Akica.Blazor.Data.ViewModels
+@using KAkica.Communication.Request
+@using KAkica.Communication.Response
+
+@if(Model.SelectedPooper != null)
+{
+<h3>Activity</h3>
+
+    <MatList SingleSelection="true">
+        @{
+            foreach (var activity in Model.SelectedPooper.Activities)
+            {
+                <MatListItem>
+                    <MatSlideToggle Disabled="true" Checked="@activity.Poop" Label="Poop"></MatSlideToggle>
+                    <MatSlideToggle Disabled="true" Checked="@activity.Whizz" Label="Whizz"></MatSlideToggle>
+                </MatListItem>
+            }
+        }
+    </MatList>
+}
+
+@code {
+
+    [Parameter] public PoopersViewModel Model { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        //Model.OnRefreshNeeded += (sender, e) => StateHasChanged();
+        Model.OnSelectionChanged += (sender, e) => StateHasChanged();
+    }
+}
