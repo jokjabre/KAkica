@@ -1,5 +1,5 @@
 ﻿using JokJaBre.Core.Objects;
-using KAkica.API.Startup_Helpers;
+using JokJaBre.Core.API.Extensions;
 using KAkica.Domain.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -11,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Net;
+using KAkica.API.Services;
+using JokJaBre.Core;
+using JokJaBre.Core.Identity.Extensions;
 
 namespace KAkica_API
 {
@@ -33,17 +36,18 @@ namespace KAkica_API
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2) ;
 
-            //services.AddAutoMapper(typeof(Startup), typeof(AutoMapperProfile));
-
-
-            services.AddScopedServices();
+            //scoped services
+            services.AddJokJaBreScopedModel<Pooper, PooperService>();
+            services.AddJokJaBreScopedModel<KakicaUser>();
+            services.AddJokJaBreScopedModel<Owner>();
+            services.AddJokJaBreScopedModel<Activity>();
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
-            //services.AddIdentity();
+            services.AddJokJaBreIdentity<KAkicaDbContext>();
 
            
         }

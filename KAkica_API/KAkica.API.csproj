@@ -17,4 +17,8 @@
     <ProjectReference Include="..\KAkica.Domain\KAkica.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Startup Helpers\" />
+  </ItemGroup>
+
 </Project>
